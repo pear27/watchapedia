@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Info from "../components/Info.js";
 import MainSlideButton from "../components/Button.js";
 import TopBar from "../components/TopBar.js";
+import Footer from "../components/Footer.js";
 import styles from "../styles/Home.module.css";
 
 const baseURL = "https://api.themoviedb.org/3/";
@@ -188,6 +189,7 @@ function MovieHome() {
               <MainSlideButton />
             </div>
           </div>
+          <Footer />
         </div>
       )}
     </div>

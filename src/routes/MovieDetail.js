@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "../styles/Detail.module.css";
 import Detail from "../components/Detail.js";
 import TopBar from "../components/TopBar.js";
+import Footer from "../components/Footer.js";
 
 const baseURL = "https://api.themoviedb.org/3/";
 const API_KEY = "3e9182edc9db5309c9808658e8b64cca";
@@ -66,6 +67,7 @@ function MovieDetail() {
               providers={providers}
             />
           </div>
+          <Footer />
         </div>
       )}
     </div>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Info from "../components/Info.js";
 import TopBar from "../components/TopBar.js";
 import MainSlideButton from "../components/Button.js";
+import Footer from "../components/Footer.js";
 import styles from "../styles/Home.module.css";
 
 const baseURL = "https://api.themoviedb.org/3/";
@@ -86,6 +87,7 @@ function Search() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

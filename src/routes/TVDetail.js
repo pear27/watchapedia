@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 // import PropTypes from "prop-types";
 import styles from "../styles/Detail.module.css";
 import TopBar from "../components/TopBar.js";
+import Footer from "../components/Footer.js";
 import Detail from "../components/Detail.js";
 
 const baseURL = "https://api.themoviedb.org/3/";
@@ -67,6 +68,7 @@ function TVDetail() {
               providers={providers}
             />
           </div>
+          <Footer />
         </div>
       )}
     </div>
