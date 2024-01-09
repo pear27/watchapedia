@@ -1,5 +1,5 @@
 {
-  "name": "netflix",
+  "name": "watchapedia",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,7 +44,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://pear27.github.io/watchapedia",
   "devDependencies": {
     "webpack-cli": "^5.1.4"
   }
