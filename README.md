@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Watchapedia
+watchapedia clone coding (Nomad Coders)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🖥 프로젝트 소개
+Nomad Coders의 <ReactJS로 영화 웹 서비스 만들기> 강의를 참고하여 watchapedia의 핵심 기능들을 구현하였습니다.
+API: TMDB
+<br>
 
-## Available Scripts
+## ⏰ 개발 기간
+23.11.22(WED) ~ 24.01.09(TUE)
 
-In the project directory, you can run:
+## ⚙️ 개발 환경
+`HTML` `CSS` `JavaScript` `React`
 
-### `npm start`
+## 🖋 개발 과정
+BLOG: [노마드 코더 Nomad Coders - ReactJS로 영화소개 웹만들기]
+(https://tinytinybang.tistory.com/category/%EA%B3%B5%EB%B6%80%20%EA%B8%B0%EB%A1%9D/%EB%85%B8%EB%A7%88%EB%93%9C%20%EC%BD%94%EB%8D%94%20Nomad%20Coders%20-%20ReactJS%EB%A1%9C%20%EC%98%81%ED%99%94%EC%86%8C%EA%B0%9C%20%EC%9B%B9%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 😳 미리 보기
+https://pear27.github.io/watchapedia/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📌 주요 기능
+### 영화
+#### 현재 상영 중인 영화 목록
+현재 한국에서 상영 중인 영화 목록을 보여줍니다.
+#### OTT별 인기 영화 목록
+넷플릭스, 디즈니플러스, 왓챠, 웨이브에서 제공하는 인기 영화 목록을 순서대로 보여줍니다.
+### TV프로그램
+#### 한국 인기 TV프로그램 목록
+현재 한국에서 인기 있는 TV 시리즈 목록을 보여줍니다.
+#### OTT별 인기 TV프로그럄 목록
+넷플릭스, 디즈니플러스, 왓챠, 웨이브에서 제공하는 인기 TV 시리즈 목록을 순서대로 보여줍니다.
+### 검색
+영화 제목이나 TV프로그램 이름을 검색하면 해당하는 작품의 목록을 보여줍니다.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🤝 자료 출처
+#### 버튼 아이콘
+<a href="https://www.flaticon.com/kr/free-icons/" title="화살촉 아이콘">화살촉 아이콘  제작자: feen - Flaticon</a><br>
+<a href="https://www.flaticon.com/kr/free-icons/" title="별 아이콘">별 아이콘  제작자: iconixar - Flaticon</a><br>
+<a href="https://www.flaticon.com/kr/free-icons/-" title="영화 산업 아이콘">영화 산업 아이콘  제작자: Freepik - Flaticon</a><br>
+<a href="https://www.flaticon.com/kr/free-icons/tv" title="tv 아이콘">Tv 아이콘  제작자: Freepik - Flaticon</a>
