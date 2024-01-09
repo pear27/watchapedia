@@ -86,17 +86,29 @@ function Detail({
         <div>
           <h2 className={styles.similars_title}>비슷한 작품</h2>
           <div className={styles.similars}>
-            {similars.map((similar) => (
-              <Info
-                key={similar.id}
-                id={similar.id}
-                type={`tv`}
-                posterImg={similar.poster_path}
-                title={similar.name}
-                releaseDate={similar.first_air_date}
-                voteAverage={similar.vote_average}
-              />
-            ))}
+            {type === "movie"
+              ? similars.map((similar) => (
+                  <Info
+                    key={similar.id}
+                    id={similar.id}
+                    type={`movie`}
+                    posterImg={similar.poster_path}
+                    title={similar.title}
+                    releaseDate={similar.release_date}
+                    voteAverage={similar.vote_average}
+                  />
+                ))
+              : similars.map((similar) => (
+                  <Info
+                    key={similar.id}
+                    id={similar.id}
+                    type={`tv`}
+                    posterImg={similar.poster_path}
+                    title={similar.name}
+                    releaseDate={similar.first_air_date}
+                    voteAverage={similar.vote_average}
+                  />
+                ))}
           </div>
           <MainSlideButton />
         </div>
