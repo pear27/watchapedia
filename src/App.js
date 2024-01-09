@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import Home from "./routes/Home";
-import Detail from "./routes/Detail"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MovieHome from "./routes/MovieHome";
+import TVHome from "./routes/TVHome";
+import Detail from "./routes/MovieDetail";
+import TVDetail from "./routes/TVDetail";
+import Search from "./routes/Search";
 
 function App() {
   return (
@@ -14,8 +13,17 @@ function App() {
         <Route path="/movie/:id">
           <Detail />
         </Route>
+        <Route path="/search/:title">
+          <Search />
+        </Route>
+        <Route path="/tv/:id">
+          <TVDetail />
+        </Route>
+        <Route path="/tv">
+          <TVHome />
+        </Route>
         <Route path="/">
-          <Home />
+          <MovieHome />
         </Route>
       </Switch>
     </Router>

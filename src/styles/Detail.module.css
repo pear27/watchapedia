@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.loading_text {
+    position: relative;
+    top: 200px;
+    text-align: center;
+    font-family: 'JalnanGothic';
+    color: silver;
+}
+
+.movie_info_total {
+    position: relative;
+}
+
+.movie_detail_backdrop {
+    width: 100%;
+    filter: brightness(70%);
+}
+
+.movie_info {
+    margin: 5%;
+    position: absolute;
+    bottom: 0%;
+    color: white;
+}
+
+.movie_info_title {
+    font-family: 'LINESeedKR-Bd';
+    font-size: 40px;
+    margin: 0%;
+}
+
+.movie_info_original_title {
+    font-family: 'S-CoreDream-3Light';
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.year_genres,
+.time_adult {
+    display: flex;
+    font-family: 'S-CoreDream-3Light';
+}
+
+p.year,
+.genres,
+.time,
+.adult {
+    margin: 0;
+}
+
+.detail_total {
+    display: flex;
+}
+
+.vote_detail {
+    position: relative;
+    left: 30px;
+}
+
+.vote {
+    display: flex;
+    border-bottom: 2px solid rgb(245, 245, 247);
+    margin: 0;
+    padding: 5px;
+}
+
+.movie_vote_average {
+    font-family: 'LINESeedKR-Bd';
+    font-size: 20px;
+    position: relative;
+    left: 10px;
+    top: 18px;
+    margin: 0;
+}
+
+.tagline {
+    font-family: 'LINESeedKR-Bd';
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 0%;
+}
+
+.top_bar {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid rgb(245, 245, 247);
+    position: fixed;
+    top: 0%;
+    text-align: center;
+    height: 62px;
+    z-index: 999;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 28px;
+}
+
+.top_navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 210px;
+    display: flex;
+}
+
+.top_navigation_movie {
+    font-family: LINESeedKR-Bd;
+    color: gray;
+    position: relative;
+    top: 5px;
+    cursor: pointer;
+}
+
+.top_navigation_tv {
+    font-family: LINESeedKR-Bd;
+    color: gray;
+    position: relative;
+    top: 5px;
+    left: 30px;
+    cursor: pointer;
+}
+
+.search_bar {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+}
+
+.search_input {
+    border: none;
+    background-color: rgb(245, 245, 247);
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-style: bold;
+}
+
+.detail_total {
+    margin-top: 3.5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.movie_img {
+    width: 328px;
+    height: 491px;
+}
+
+.provider_logo {
+    margin: 10px;
+    border-radius: 32px;
+    width: 64px;
+    height: 64px;
+}
+
+.similars {
+    display: flex;
+    overflow: auto;
+    overflow: scroll;
+    margin-left: 42px;
+    margin-right: 42px;
+}
+
+.similars::-webkit-scrollbar {
+    display: none;
+}
+
+.similars_title {
+    margin: 50px;
+    display: flex;
+    position: relative;
+    z-index: -1;
+    margin-block-start: 1em;
+    margin-block-end: 0.4em;
+}
