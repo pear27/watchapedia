@@ -16,7 +16,7 @@ API: TMDB
 BLOG: [노마드 코더 Nomad Coders - ReactJS로 영화소개 웹만들기](https://tinytinybang.tistory.com/category/%EA%B3%B5%EB%B6%80%20%EA%B8%B0%EB%A1%9D/%EB%85%B8%EB%A7%88%EB%93%9C%20%EC%BD%94%EB%8D%94%20Nomad%20Coders%20-%20ReactJS%EB%A1%9C%20%EC%98%81%ED%99%94%EC%86%8C%EA%B0%9C%20%EC%9B%B9%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
 ## 😳 미리 보기
-https://pear27.github.io/watchapedia/
+https://watchapedia-clone.netlify.app/
 
 ## 📌 주요 기능
 ### 영화
