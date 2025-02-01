@@ -23,55 +23,47 @@ function TVHome() {
   const [jsonWavveTVs, setjsonWavveTVs] = useState(false);
 
   useEffect(() => {
-    fetch(
-      // Korea Popular TV List
-      `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&page=1&sort_by=popularity.desc&region=KR&with_origin_country=KR`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setKoreaPopular(json.results);
+    const fetchTVs = async () => {
+      try {
+        // Korea Popular TV List
+        const KoreaPopularResponse = await fetch(
+          `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&page=1&sort_by=popularity.desc&region=KR&with_origin_country=KR`
+        );
+        setKoreaPopular((await KoreaPopularResponse.json()).results);
         setjsonKoreaPopular(true);
-      });
 
-    fetch(
-      // Netflix TV List
-      `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=8`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setNetflixTVs(json.results);
+        // Netflix TV List
+        const netflixTVsResponse = await fetch(
+          `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=8`
+        );
+        setNetflixTVs((await netflixTVsResponse.json()).results);
         setjsonNetflixTVs(true);
-      });
 
-    fetch(
-      // Disney Plus TV List
-      `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=337`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setDisneyPlusTVs(json.results);
+        // Disney Plus TV List
+        const disneyPlusTVsResponse = await fetch(
+          `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=337`
+        );
+        setDisneyPlusTVs((await disneyPlusTVsResponse.json()).results);
         setjsonDisneyPlusTVs(true);
-      });
 
-    fetch(
-      // Watcha TV List
-      `${baseURL}/discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=97`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setWatchaTVs(json.results);
+        // Watcha TV List
+        const watchaTVsResponse = await fetch(
+          `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=97`
+        );
+        setWatchaTVs((await watchaTVsResponse.json()).results);
         setjsonWatchaTVs(true);
-      });
 
-    fetch(
-      // Wavve tv List
-      `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=356`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setWavveTVs(json.results);
+        // Wavve tv List
+        const wavveTVsResponse = await fetch(
+          `${baseURL}discover/tv?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=356`
+        );
+        setWavveTVs((await wavveTVsResponse.json()).results);
         setjsonWavveTVs(true);
-      });
+      } catch (error) {
+        console.error("Error fetching TV Shows:", error);
+      }
+    };
+    fetchTVs();
   }, []);
   return (
     <div>
@@ -94,17 +86,21 @@ function TVHome() {
                 한국 TV 프로그램 인기 순위
               </h2>
               <div className={styles.movie_list}>
-                {KoreaPopular.map((tv) => (
-                  <Info
-                    key={tv.id}
-                    id={tv.id}
-                    type={`tv`}
-                    posterImg={tv.poster_path}
-                    title={tv.name}
-                    releaseDate={tv.first_air_date}
-                    voteAverage={tv.vote_average}
-                  />
-                ))}
+                {KoreaPopular && KoreaPopular.length > 0 ? (
+                  KoreaPopular.map((tv) => (
+                    <Info
+                      key={tv.id}
+                      id={tv.id}
+                      type={`tv`}
+                      posterImg={tv.poster_path}
+                      title={tv.name}
+                      releaseDate={tv.first_air_date}
+                      voteAverage={tv.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -116,17 +112,21 @@ function TVHome() {
                 넷플릭스 인기 TV 프로그램
               </h2>
               <div className={styles.movie_list}>
-                {NetflixTVs.map((tv) => (
-                  <Info
-                    key={tv.id}
-                    id={tv.id}
-                    type={`tv`}
-                    posterImg={tv.poster_path}
-                    title={tv.name}
-                    releaseDate={tv.first_air_date}
-                    voteAverage={tv.vote_average}
-                  />
-                ))}
+                {NetflixTVs && NetflixTVs.length > 0 ? (
+                  NetflixTVs.map((tv) => (
+                    <Info
+                      key={tv.id}
+                      id={tv.id}
+                      type={`tv`}
+                      posterImg={tv.poster_path}
+                      title={tv.name}
+                      releaseDate={tv.first_air_date}
+                      voteAverage={tv.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -138,17 +138,21 @@ function TVHome() {
                 디즈니플러스 인기 TV 프로그램
               </h2>
               <div className={styles.movie_list}>
-                {DisneyPlusTVs.map((tv) => (
-                  <Info
-                    key={tv.id}
-                    id={tv.id}
-                    type={`tv`}
-                    posterImg={tv.poster_path}
-                    title={tv.name}
-                    releaseDate={tv.first_air_date}
-                    voteAverage={tv.vote_average}
-                  />
-                ))}
+                {DisneyPlusTVs && DisneyPlusTVs.length > 0 ? (
+                  DisneyPlusTVs.map((tv) => (
+                    <Info
+                      key={tv.id}
+                      id={tv.id}
+                      type={`tv`}
+                      posterImg={tv.poster_path}
+                      title={tv.name}
+                      releaseDate={tv.first_air_date}
+                      voteAverage={tv.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -158,17 +162,21 @@ function TVHome() {
               {/* Watcha Movie List */}
               <h2 className={styles.movie_list_title}>왓챠 인기 TV 프로그램</h2>
               <div className={styles.movie_list}>
-                {WatchaTVs.map((tv) => (
-                  <Info
-                    key={tv.id}
-                    id={tv.id}
-                    type={`tv`}
-                    posterImg={tv.poster_path}
-                    title={tv.name}
-                    releaseDate={tv.first_air_date}
-                    voteAverage={tv.vote_average}
-                  />
-                ))}
+                {WatchaTVs && WatchaTVs.length > 0 ? (
+                  WatchaTVs.map((tv) => (
+                    <Info
+                      key={tv.id}
+                      id={tv.id}
+                      type={`tv`}
+                      posterImg={tv.poster_path}
+                      title={tv.name}
+                      releaseDate={tv.first_air_date}
+                      voteAverage={tv.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -180,17 +188,21 @@ function TVHome() {
                 웨이브 인기 TV 프로그램
               </h2>
               <div className={styles.movie_list}>
-                {WavveTVs.map((tv) => (
-                  <Info
-                    key={tv.id}
-                    id={tv.id}
-                    type={`tv`}
-                    posterImg={tv.poster_path}
-                    title={tv.name}
-                    releaseDate={tv.first_air_date}
-                    voteAverage={tv.vote_average}
-                  />
-                ))}
+                {WavveTVs && WavveTVs.length > 0 ? (
+                  WavveTVs.map((tv) => (
+                    <Info
+                      key={tv.id}
+                      id={tv.id}
+                      type={`tv`}
+                      posterImg={tv.poster_path}
+                      title={tv.name}
+                      releaseDate={tv.first_air_date}
+                      voteAverage={tv.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>

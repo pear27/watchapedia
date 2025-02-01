@@ -23,55 +23,47 @@ function MovieHome() {
   const [jsonWavveMovies, setjsonWavveMovies] = useState(false);
 
   useEffect(() => {
-    fetch(
-      // Now Playing Movie List
-      `${baseURL}movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1&region=KR`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setNowPlaying(json.results);
+    const fetchMovies = async () => {
+      try {
+        // Now Playing Movie List
+        const nowPlayingResponse = await fetch(
+          `${baseURL}movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1&region=KR`
+        );
+        setNowPlaying((await nowPlayingResponse.json()).results);
         setjsonNowPlaying(true);
-      });
 
-    fetch(
-      // Netflix Movie List
-      `${baseURL}discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=8`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setNetflixMovies(json.results);
+        // Netflix Movie List
+        const netflixResponse = await fetch(
+          `${baseURL}discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=8`
+        );
+        setNetflixMovies((await netflixResponse.json()).results);
         setjsonNetflixMovies(true);
-      });
 
-    fetch(
-      // Disney Plus Movie List
-      `${baseURL}discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=337`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setDisneyPlusMovies(json.results);
+        // Disney Plus Movie List
+        const disneyPlusResponse = await fetch(
+          `${baseURL}discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=337`
+        );
+        setDisneyPlusMovies((await disneyPlusResponse.json()).results);
         setjsonDisneyPlusMovies(true);
-      });
 
-    fetch(
-      // Watcha Movie List
-      `${baseURL}/discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=97`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setWatchaMovies(json.results);
+        // Watcha Movie List
+        const watchaResponse = await fetch(
+          `${baseURL}discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=97`
+        );
+        setWatchaMovies((await watchaResponse.json()).results);
         setjsonWatchaMovies(true);
-      });
 
-    fetch(
-      // Wavve Movie List
-      `${baseURL}discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=356`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setWavveMovies(json.results);
+        // Wavve Movie List
+        const wavveResponse = await fetch(
+          `${baseURL}discover/movie?api_key=${API_KEY}&language=ko-KR&watch_region=KR&page=1&sort_by=popularity.desc&with_watch_providers=356`
+        );
+        setWavveMovies((await wavveResponse.json()).results);
         setjsonWavveMovies(true);
-      });
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+    fetchMovies();
   }, []);
   return (
     <div>
@@ -92,17 +84,21 @@ function MovieHome() {
               {/* Now Playing Movie List */}
               <h2 className={styles.movie_list_title}>지금 상영하는 영화</h2>
               <div className={styles.movie_list}>
-                {nowPlaying.map((movie) => (
-                  <Info
-                    key={movie.id}
-                    id={movie.id}
-                    type={`movie`}
-                    posterImg={movie.poster_path}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    voteAverage={movie.vote_average}
-                  />
-                ))}
+                {nowPlaying && nowPlaying.length > 0 ? (
+                  nowPlaying.map((movie) => (
+                    <Info
+                      key={movie.id}
+                      id={movie.id}
+                      type={`movie`}
+                      posterImg={movie.poster_path}
+                      title={movie.title}
+                      releaseDate={movie.release_date}
+                      voteAverage={movie.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -112,17 +108,21 @@ function MovieHome() {
               {/* Netflix Movie List */}
               <h2 className={styles.movie_list_title}>넷플릭스 인기 영화</h2>
               <div className={styles.movie_list}>
-                {NetflixMovies.map((movie) => (
-                  <Info
-                    key={movie.id}
-                    id={movie.id}
-                    type={`movie`}
-                    posterImg={movie.poster_path}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    voteAverage={movie.vote_average}
-                  />
-                ))}
+                {NetflixMovies && NetflixMovies.length > 0 ? (
+                  NetflixMovies.map((movie) => (
+                    <Info
+                      key={movie.id}
+                      id={movie.id}
+                      type={`movie`}
+                      posterImg={movie.poster_path}
+                      title={movie.title}
+                      releaseDate={movie.release_date}
+                      voteAverage={movie.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -134,17 +134,21 @@ function MovieHome() {
                 디즈니플러스 인기 영화
               </h2>
               <div className={styles.movie_list}>
-                {DisneyPlusMovies.map((movie) => (
-                  <Info
-                    key={movie.id}
-                    id={movie.id}
-                    type={`movie`}
-                    posterImg={movie.poster_path}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    voteAverage={movie.vote_average}
-                  />
-                ))}
+                {DisneyPlusMovies && DisneyPlusMovies.length > 0 ? (
+                  DisneyPlusMovies.map((movie) => (
+                    <Info
+                      key={movie.id}
+                      id={movie.id}
+                      type={`movie`}
+                      posterImg={movie.poster_path}
+                      title={movie.title}
+                      releaseDate={movie.release_date}
+                      voteAverage={movie.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -154,17 +158,21 @@ function MovieHome() {
               {/* Watcha Movie List */}
               <h2 className={styles.movie_list_title}>왓챠 인기 영화</h2>
               <div className={styles.movie_list}>
-                {WatchaMovies.map((movie) => (
-                  <Info
-                    key={movie.id}
-                    id={movie.id}
-                    type={`movie`}
-                    posterImg={movie.poster_path}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    voteAverage={movie.vote_average}
-                  />
-                ))}
+                {WatchaMovies && WatchaMovies.length > 0 ? (
+                  WatchaMovies.map((movie) => (
+                    <Info
+                      key={movie.id}
+                      id={movie.id}
+                      type={`movie`}
+                      posterImg={movie.poster_path}
+                      title={movie.title}
+                      releaseDate={movie.release_date}
+                      voteAverage={movie.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
@@ -174,17 +182,21 @@ function MovieHome() {
               {/* Wavve Movie List */}
               <h2 className={styles.movie_list_title}>웨이브 인기 영화</h2>
               <div className={styles.movie_list}>
-                {WavveMovies.map((movie) => (
-                  <Info
-                    key={movie.id}
-                    id={movie.id}
-                    type={`movie`}
-                    posterImg={movie.poster_path}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    voteAverage={movie.vote_average}
-                  />
-                ))}
+                {WavveMovies && WavveMovies.length > 0 ? (
+                  WavveMovies.map((movie) => (
+                    <Info
+                      key={movie.id}
+                      id={movie.id}
+                      type={`movie`}
+                      posterImg={movie.poster_path}
+                      title={movie.title}
+                      releaseDate={movie.release_date}
+                      voteAverage={movie.vote_average}
+                    />
+                  ))
+                ) : (
+                  <p>영화 목록을 불러오는 중입니다...</p>
+                )}
               </div>
               <MainSlideButton />
             </div>
