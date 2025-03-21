@@ -7,7 +7,7 @@ import Footer from "../components/Footer.js";
 import styles from "../styles/Home.module.css";
 
 const baseURL = "https://api.themoviedb.org/3/";
-const API_KEY = "3e9182edc9db5309c9808658e8b64cca";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function TVHome() {
   const [KoreaPopular, setKoreaPopular] = useState([]);

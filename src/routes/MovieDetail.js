@@ -6,7 +6,7 @@ import TopBar from "../components/TopBar.js";
 import Footer from "../components/Footer.js";
 
 const baseURL = "https://api.themoviedb.org/3/";
-const API_KEY = "3e9182edc9db5309c9808658e8b64cca";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function MovieDetail() {
   const [movie, setMovie] = useState([]);
